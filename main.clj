@@ -8,7 +8,7 @@
       (str/split (slurp "sample_tweets.txt") #"\s+"))))
 
 (defn next-word [current-word]
-  (cons current-word (if (.endsWith current-word ".") [] (next-word (rand-nth (db current-word))))))
+  (cons current-word (if (str/ends-with? current-word ".") [] (next-word (rand-nth (db current-word))))))
 
 (defn tweetgen [first-word] (str/join " " (next-word first-word)))
 
